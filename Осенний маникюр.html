@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Осенний маникюр · Студия ногтевого сервиса</title>
+  
+  <!-- Шрифт -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #1a0f0a;
+      color: #f5e6d3;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .leaves-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .leaf {
+      position: absolute;
+      font-size: 1.8rem;
+      opacity: 0.7;
+      animation: leafFall linear infinite;
+      user-select: none;
+      filter: drop-shadow(0 0 6px rgba(255, 150, 50, 0.4));
+    }
+
+    @keyframes leafFall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% {
+        transform: translateY(110vh) rotate(720deg) translateX(80px);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+      text-align: center;
+    }
+
+    .ornament {
+      font-size: 2.2rem;
+      letter-spacing: 12px;
+      color: #d4a747;
+      opacity: 0.5;
+      margin-bottom: 20px;
+      font-family: 'Times New Roman', serif;
+      text-shadow: 0 0 15px rgba(212, 167, 71, 0.3);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #f5d76e, #d4a747, #c98a2b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 40px rgba(212, 167, 71, 0.4);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 small {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 8px;
+      color: #c98a2b;
+      text-transform: uppercase;
+      margin-top: 10px;
+      text-shadow: 0 0 20px rgba(212, 167, 71, 0.3);
+      font-family: 'Georgia', serif;
+      font-style: normal;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #d4b896;
+      font-style: italic;
+      margin-top: 16px;
+      border-top: 1px solid rgba(212, 167, 71, 0.2);
+      display: inline-block;
+      padding-top: 16px;
+      letter-spacing: 1px;
+    }
+
+    /* ГАЛЕРЕЯ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px;
+      margin: 50px 0 30px;
+    }
+
+    .gallery-card {
+      perspective: 1000px;
+      height: 220px;
+      position: relative;
+    }
+
+    .gallery-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+    }
+
+    .gallery-card:hover .gallery-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .gallery-card-front, .gallery-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 60px 16px 60px 16px;
+      padding: 22px 16px 24px;
+      text-align: center;
+      border: 1px solid rgba(212, 167, 71, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .gallery-card-front {
+      background: rgba(40, 20, 10, 0.7);
+    }
+
+    .gallery-card-back {
+      background: linear-gradient(135deg, #4a2a15, #2a1408);
+      transform: rotateY(180deg);
+      border-color: #d4a747;
+      box-shadow: 0 0 40px rgba(212, 167, 71, 0.3);
+    }
+
+    .gallery-card .emoji-big {
+      font-size: 3.8rem;
+      display: block;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 0 15px rgba(212, 167, 71, 0.5));
+    }
+
+    .gallery-card h4 {
+      font-weight: 400;
+      color: #f5d76e;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(212, 167, 71, 0.4);
+    }
+
+    .gallery-card p {
+      font-size: 0.85rem;
+      color: #d4b896;
+      font-style: italic;
+    }
+
+    .gallery-card-back h4 {
+      color: #f5d76e;
+      margin-bottom: 6px;
+    }
+
+    .gallery-card-back p {
+      font-size: 0.8rem;
+      color: #d4b896;
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    /* УСЛУГИ */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+
+    .service-item {
+      perspective: 1000px;
+      height: 220px;
+      position: relative;
+    }
+
+    .service-item-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .service-item:hover .service-item-inner {
+      transform: rotate(360deg);
+    }
+
+    .service-item-front, .service-item-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      padding: 30px 16px;
+      text-align: center;
+      border: 2px solid rgba(212, 167, 71, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    }
+
+    .service-item-front {
+      background: linear-gradient(135deg, rgba(60, 30, 15, 0.9), rgba(40, 20, 10, 0.9));
+      box-shadow: 0 0 25px rgba(212, 167, 71, 0.2);
+    }
+
+    .service-item-back {
+      background: linear-gradient(135deg, #4a2a15, #2a1408);
+      border-color: #f5d76e;
+      box-shadow: 0 0 40px rgba(212, 167, 71, 0.4);
+    }
+
+    .service-item .icon {
+      font-size: 2.4rem;
+      display: block;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 0 12px rgba(212, 167, 71, 0.5));
+    }
+
+    .service-item .name {
+      font-size: 1.2rem;
+      color: #f5d76e;
+      text-shadow: 0 0 10px rgba(212, 167, 71, 0.4);
+    }
+
+    .service-item .price {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #d4a747;
+      text-shadow: 0 0 20px rgba(212, 167, 71, 0.5);
+    }
+
+    .service-item .desc {
+      font-size: 0.8rem;
+      color: #d4b896;
+      font-style: italic;
+    }
+
+    .service-item-back .name {
+      color: #f5d76e;
+      margin-bottom: 6px;
+    }
+
+    .service-item-back .desc {
+      font-size: 0.85rem;
+      color: #d4b896;
+      font-style: normal;
+      line-height: 1.5;
+    }
+
+    .vk-block {
+      margin: 40px 0;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(212, 167, 71, 0.2);
+      border-bottom: 1px solid rgba(212, 167, 71, 0.2);
+    }
+
+    .btn-vk {
+      display: inline-block;
+      padding: 16px 48px;
+      background: linear-gradient(135deg, #4a76a8, #2b5a8a);
+      color: #fff;
+      border: 2px solid #6a9bd8;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      box-shadow: 0 0 20px rgba(74, 118, 168, 0.4), inset 0 0 20px rgba(74, 118, 168, 0.2);
+    }
+
+    .btn-vk:hover {
+      background: linear-gradient(135deg, #5a8ac0, #3a6a9a);
+      box-shadow: 0 0 50px rgba(74, 118, 168, 0.7), inset 0 0 30px rgba(74, 118, 168, 0.4);
+      transform: scale(1.05);
+      border-color: #8ab4ff;
+    }
+
+    .booking-block {
+      margin: 30px 0 20px;
+      padding: 20px 0;
+    }
+
+    .btn-neon {
+      display: inline-block;
+      padding: 16px 48px;
+      background: transparent;
+      color: #f5d76e;
+      border: 2px solid #d4a747;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      box-shadow: 0 0 20px rgba(212, 167, 71, 0.3), inset 0 0 20px rgba(212, 167, 71, 0.1);
+      margin: 6px;
+    }
+
+    .btn-neon:hover {
+      background: rgba(212, 167, 71, 0.15);
+      border-color: #f5d76e;
+      box-shadow: 0 0 60px rgba(212, 167, 71, 0.6), inset 0 0 40px rgba(212, 167, 71, 0.2);
+      transform: scale(1.05) translateY(-3px);
+      color: #fff8e0;
+    }
+
+    .booking-note {
+      font-size: 0.85rem;
+      color: #a08060;
+      font-style: italic;
+      letter-spacing: 1px;
+      margin-top: 10px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      margin: 30px 0 10px;
+    }
+
+    .info-card {
+      background: rgba(40, 20, 10, 0.5);
+      backdrop-filter: blur(4px);
+      padding: 24px 16px;
+      border-radius: 50px 12px 50px 12px;
+      text-align: center;
+      border: 1px solid rgba(212, 167, 71, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: scale(1.05);
+      border-color: #d4a747;
+      box-shadow: 0 0 30px rgba(212, 167, 71, 0.3);
+    }
+
+    .info-card .emoji {
+      font-size: 2.6rem;
+      display: block;
+      margin-bottom: 4px;
+      filter: drop-shadow(0 0 10px rgba(212, 167, 71, 0.4));
+    }
+
+    .info-card h4 {
+      font-weight: 400;
+      color: #f5d76e;
+      letter-spacing: 1px;
+    }
+
+    .info-card p {
+      font-size: 0.85rem;
+      color: #d4b896;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #8a6a4a;
+      border-top: 1px solid rgba(212, 167, 71, 0.15);
+      padding-top: 24px;
+      margin-top: 20px;
+      letter-spacing: 2px;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.8rem; letter-spacing: 2px; }
+      .hero h1 small { font-size: 0.7rem; letter-spacing: 4px; }
+      .btn-neon { padding: 14px 28px; font-size: 1rem; }
+      .btn-vk { padding: 14px 32px; font-size: 1rem; }
+      .ornament { font-size: 1.6rem; letter-spacing: 8px; }
+      .gallery-card { height: 240px; }
+      .service-item { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="leaves-bg" id="leavesContainer"></div>
+
+  <div class="container">
+
+    <div class="ornament">❧ ✿ ❧ ✿ ❧</div>
+
+    <section class="hero">
+      <h1>
+        ОСЕННИЙ МАНИКЮР
+        <small>студия ногтевого сервиса</small>
+      </h1>
+      <p>«Тёплые оттенки осени на ваших ногтях»</p>
+    </section>
+
+    <div class="ornament" style="font-size:1.6rem;">✧ ✦ ✧</div>
+
+    <section class="gallery">
+      <h2 style="font-weight:400; color:#f5d76e; text-shadow:0 0 30px rgba(212,167,71,0.5); letter-spacing:3px;">Наши работы</h2>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <div class="gallery-card-inner">
+            <div class="gallery-card-front">
+              <span class="emoji-big">🍂</span>
+              <h4>Осенний френч</h4>
+              <p>Тёплые оттенки</p>
+            </div>
+            <div class="gallery-card-back">
+              <h4>Осенний френч</h4>
+              <p>Классический френч в осенних тонах: охра, терракота, золото.</p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card-inner">
+            <div class="gallery-card-front">
+              <span class="emoji-big">🌰</span>
+              <h4>Лунный маникюр</h4>
+              <p>Современная классика</p>
+            </div>
+            <div class="gallery-card-back">
+              <h4>Лунный маникюр</h4>
+              <p>Лунки у основания ногтя — акцент на естественную красоту.</p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card-inner">
+            <div class="gallery-card-front">
+              <span class="emoji-big">🍁</span>
+              <h4>Омбре / градиент</h4>
+              <p>Плавный переход</p>
+            </div>
+            <div class="gallery-card-back">
+              <h4>Омбре / градиент</h4>
+              <p>Плавный переход от светлого к тёмному. Любой цвет, любой сезон.</p>
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-card-inner">
+            <div class="gallery-card-front">
+              <span class="emoji-big">✨</span>
+              <h4>Вензеля и стразы</h4>
+              <p>Для особого вечера</p>
+            </div>
+            <div class="gallery-card-back">
+              <h4>Вензеля и стразы</h4>
+              <p>Вечерний дизайн с вензелями и стразами. Блеск и роскошь.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="vk-block">
+      <a href="https://vk.com/группа" class="btn-vk" target="_blank">
+        📸 Наши работы в VK
+      </a>
+    </div>
+
+    <section class="services">
+      <h2 style="font-weight:400; color:#f5d76e; text-shadow:0 0 30px rgba(212,167,71,0.5); letter-spacing:3px;">Услуги и цены</h2>
+      <div class="service-grid">
+        <div class="service-item">
+          <div class="service-item-inner">
+            <div class="service-item-front">
+              <span class="icon">💅</span>
+              <div class="name">Маникюр</div>
+              <div class="price">1 500 ₽</div>
+              <div class="desc">классический / аппаратный</div>
+            </div>
+            <div class="service-item-back">
+              <div class="name">Маникюр</div>
+              <div class="desc">Классический или аппаратный. Обработка кутикулы, форма, покрытие гель-лаком.</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-inner">
+            <div class="service-item-front">
+              <span class="icon">🦶</span>
+              <div class="name">Педикюр</div>
+              <div class="price">2 200 ₽</div>
+              <div class="desc">с SPA-уходом</div>
+            </div>
+            <div class="service-item-back">
+              <div class="name">Педикюр</div>
+              <div class="desc">Аппаратный педикюр с SPA-уходом. Ванночки, скрабы, массаж стоп.</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-inner">
+            <div class="service-item-front">
+              <span class="icon">🎨</span>
+              <div class="name">Дизайн</div>
+              <div class="price">от 800 ₽</div>
+              <div class="desc">индивидуальный рисунок</div>
+            </div>
+            <div class="service-item-back">
+              <div class="name">Дизайн</div>
+              <div class="desc">Индивидуальный дизайн: роспись, стразы, вензеля, градиент. Любая сложность.</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-item-inner">
+            <div class="service-item-front">
+              <span class="icon">✨</span>
+              <div class="name">Наращивание</div>
+              <div class="price">3 000 ₽</div>
+              <div class="desc">гель / акрил</div>
+            </div>
+            <div class="service-item-back">
+              <div class="name">Наращивание</div>
+              <div class="desc">Наращивание гелем или акрилом. Любая форма и длина. Стойко и надолго.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="booking-block">
+      <a href="max://im?user_id=YOUR_ID" class="btn-neon" target="_blank">📩 MAX</a>
+      <a href="https://t.me/username" class="btn-neon" target="_blank">✈️ Telegram</a>
+      <a href="https://wa.me/79991234567" class="btn-neon" target="_blank">💬 WhatsApp</a>
+      <a href="tel:+79991234567" class="btn-neon">📞 Позвонить</a>
+      <div class="booking-note">
+        Оставьте номер — мы перезвоним и подберём удобное время
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <span class="emoji">🍁</span>
+        <h4>Осеннее настроение</h4>
+        <p>Тёплые оттенки</p>
+      </div>
+      <div class="info-card">
+        <span class="emoji">📅</span>
+        <h4>7 дней в неделю</h4>
+        <p>10:00 – 22:00</p>
+      </div>
+      <div class="info-card">
+        <span class="emoji">🎁</span>
+        <h4>Подарок при записи</h4>
+        <p>уход за руками</p>
+      </div>
+    </div>
+
+    <div class="ornament" style="font-size:1.2rem; opacity:0.3;">❧ ✦ ❧ ✦ ❧</div>
+
+    <div class="footer">
+      © 2026 · Осенний маникюр · Сделано с любовью к деталям
+    </div>
+
+  </div>
+
+  <script>
+    (function createLeaves() {
+      const container = document.getElementById('leavesContainer');
+      const leafEmojis = ['🍁', '🍂', '🍃', '🌿'];
+      const leavesCount = 25;
+      const fragment = document.createDocumentFragment();
+
+      for (let i = 0; i < leavesCount; i++) {
+        const leaf = document.createElement('div');
+        leaf.className = 'leaf';
+        leaf.textContent = leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
+        
+        const left = Math.random() * 100;
+        const size = 1.2 + Math.random() * 1.5;
+        const duration = 8 + Math.random() * 8;
+        const delay = Math.random() * 10;
+        
+        leaf.style.left = left + '%';
+        leaf.style.fontSize = size + 'rem';
+        leaf.style.animationDuration = duration + 's';
+        leaf.style.animationDelay = delay + 's';
+        leaf.style.opacity = 0.4 + Math.random() * 0.5;
+        
+        fragment.appendChild(leaf);
+      }
+      container.appendChild(fragment);
+    })();
+  </script>
+</body>
+</html>
